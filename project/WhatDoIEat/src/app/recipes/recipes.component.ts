@@ -9,11 +9,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent {
-  recipt : Recipe = {
-    id: 1,
-    name: 'curry'
-    // ingredients: ['carrot', 'onion', 'rice']
-  }
 
   recipts: Recipe[] = []; 
 

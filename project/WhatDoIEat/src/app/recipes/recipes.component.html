@@ -1,5 +1,8 @@
 <ul>
     <li *ngFor="let r of recipts">
-        <p>{{r.id}} : {{r.name}}</p>
+        <p>{{r.id}} : {{r.menuName}}</p>
+        <div *ngFor="let i of r.ingredients">
+            <p>{{i.ingredientName}}</p>
+        </div>
     </li>
 </ul>

@@ -1,5 +1,7 @@
+import { ingredients } from "./ingredients"
+
 export interface Recipe{
     id: number;
-    name: string;
-    // ingredients: string[];
+    menuName: string;
+    ingredients: ingredients[];
 }

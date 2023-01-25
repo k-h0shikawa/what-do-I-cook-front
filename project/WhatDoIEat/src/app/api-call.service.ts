@@ -13,7 +13,11 @@ export class ApiCallService {
 
   constructor( private httpclient: HttpClient) { }
 
+  /** レシピの内容を取得する関数
+   * 
+   * */ 
   getRecipts(): Observable<Recipe[]>{
     return this.httpclient.get<Recipe[]>(this.apiUrl);
   }
+
 }
