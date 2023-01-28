@@ -1,14 +1,18 @@
-<label>
-    <input type="text" [(ngModel)]="ownIngredients.name" placeholder="食材">
-</label>
-<p>{{ownIngredients.name}}</p>
 <h2>保持している食材</h2>
 <form [formGroup]="form">
-    <div formArrayName="inputs" *ngFor="let input of inputs.controls; let i = index">
-        <input [formControlName]="i" placeholder="input {{i+1}}">
+    <div formArrayName="ownIngredients">
+        <div *ngFor="let ingredient of ownIngredients.controls; let i = index">
+            <div [formGroupName]="i">
+                <div>食材名：<input type="text" formControlName="ownIngredientName">
+                    <button (click)="removeOwnIngredient(i)">食材削除</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button (click)="addInput()">+</button>
+    <button (click)="addOwnIngredient()">食材追加</button>
 </form>
-<div formArrayName="inputs" *ngFor="let input of inputs.controls; let i = index">
-    <p>{{ownIngredients.name}}</p>
-</div>
+
+<h3>Debug</h3>
+<ng-container *ngIf="form.value">
+  <pre>{{ form.value | json }}</pre>
+</ng-container>
