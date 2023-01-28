@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OwnIngredients } from '../own-ingredients';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-own-ingredients',
@@ -8,7 +9,25 @@ import { OwnIngredients } from '../own-ingredients';
 })
 export class OwnIngredientsComponent {
   ownIngredients:OwnIngredients = {
-    id: 1,
     name: "カニ"
   };
+
+  form: FormGroup = this.fb.group({});
+  inputs: FormArray = this.fb.array([]);
+
+
+
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      inputs: this.fb.array([])
+    });
+    this.inputs = this.form.get('inputs') as FormArray;
+  }
+
+  addInput() {
+    this.inputs.push(this.fb.control(''));
+  }
 }

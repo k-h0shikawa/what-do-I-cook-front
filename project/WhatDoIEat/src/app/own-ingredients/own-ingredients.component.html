@@ -1,4 +1,14 @@
-<label>保持している食材
+<label>
     <input type="text" [(ngModel)]="ownIngredients.name" placeholder="食材">
 </label>
 <p>{{ownIngredients.name}}</p>
+<h2>保持している食材</h2>
+<form [formGroup]="form">
+    <div formArrayName="inputs" *ngFor="let input of inputs.controls; let i = index">
+        <input [formControlName]="i" placeholder="input {{i+1}}">
+    </div>
+    <button (click)="addInput()">+</button>
+</form>
+<div formArrayName="inputs" *ngFor="let input of inputs.controls; let i = index">
+    <p>{{ownIngredients.name}}</p>
+</div>
