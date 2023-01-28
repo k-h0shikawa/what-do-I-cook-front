@@ -11,8 +11,17 @@
     </div>
     <button (click)="addOwnIngredient()">食材追加</button>
 </form>
+<button (click)="showCanMakeRecipes()">作れる料理を表示</button>
+<ul>
+    <li *ngFor="let r of recipts">
+        <p>{{r.id}} : {{r.menuName}}</p>
+        <div *ngFor="let i of r.ingredients">
+            <p>{{i.ingredientName}}</p>
+        </div>
+    </li>
+</ul>
 
 <h3>Debug</h3>
 <ng-container *ngIf="form.value">
-  <pre>{{ form.value | json }}</pre>
+    <pre>{{ form.value | json }}</pre>
 </ng-container>
