@@ -21,7 +21,6 @@ export class RecipesComponent {
   getRecipts(): void{
     this.apiCallService.getRecipts().subscribe(recipts => {
       this.recipts = recipts
-      console.log(this.recipts)
       });
   }
 }
