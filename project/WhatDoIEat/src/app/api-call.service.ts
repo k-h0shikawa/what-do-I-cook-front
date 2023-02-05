@@ -18,6 +18,7 @@ export class ApiCallService {
   
   apiUrl : string = 'http://localhost:8080'
 
+
   HTTP_OPTIONS = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json; charset=UTF-8'
@@ -32,6 +33,7 @@ export class ApiCallService {
    * */ 
   getRecipts(): Observable<Recipe[]>{
     return this.httpclient.get<Recipe[]>(this.apiUrl + "/menu");
+
   }
 
   /** 入力された食材から作成できるレシピを返す */
