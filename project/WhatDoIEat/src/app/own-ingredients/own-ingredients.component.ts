@@ -58,8 +58,10 @@ export class OwnIngredientsComponent {
   }
 
 
-  //** 入力された食材を表示（デバッグ用） */
+  //** 入力された食材を表示 */
   showCanMakeRecipes(): void{
-    this.recipts = this.apiCallService.getCanMakeRecipts(this.form.get('ownIngredients')?.value);
+    this.apiCallService.getCanMakeRecipts(this.form.value).subscribe(recipts =>
+      this.recipts = recipts
+    );
   }
 }

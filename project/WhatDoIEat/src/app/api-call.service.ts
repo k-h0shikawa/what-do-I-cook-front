@@ -18,6 +18,14 @@ export class ApiCallService {
   
   apiUrl : string = 'http://localhost:8080'
 
+
+  HTTP_OPTIONS = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json; charset=UTF-8'
+    })
+  };
+
+
   constructor( private httpclient: HttpClient) { }
 
   /** レシピの内容を取得する
@@ -25,12 +33,17 @@ export class ApiCallService {
    * */ 
   getRecipts(): Observable<Recipe[]>{
     return this.httpclient.get<Recipe[]>(this.apiUrl + "/menu");
+
   }
 
   /** 入力された食材から作成できるレシピを返す */
-  getCanMakeRecipts(ownIngredients:string) : Recipe[]{
-    return this.recipes;
-    // return this.httpclient.get<Recipe[]>(this.apiUrl + "/canMake")
-  }
+  getCanMakeRecipts(ownIngredients:string) : Observable<Recipe[]>{
+
+    return this.httpclient.post<any>(
+      this.apiUrl + "/canMakeMenu" , 
+      ownIngredients,
+      this.HTTP_OPTIONS
+      ) 
+    }
 
 }
